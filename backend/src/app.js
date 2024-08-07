@@ -9,10 +9,10 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(path.dirname(__filename));
 app.use(express.static(path.join(__dirname, "public")));
-
+console.log("cors Origin Url is",process.env.CORS_ORIGIN)
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true,
   })
 );
