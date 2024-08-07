@@ -13,8 +13,8 @@ export const signupUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set to true in production
-      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // 'None' for cross-site cookies in production
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // 'None' for cross-site cookies in production
     });
     // Exclude the password field
     user = user.toObject();
@@ -58,8 +58,8 @@ export const loginUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set to true in production
-      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // 'None' for cross-site cookies in production
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // 'None' for cross-site cookies in production
     });
     // Exclude the password field
     user = user.toObject();
@@ -75,7 +75,11 @@ export const loginUser = asyncHandler(async (req, res, next) => {
 });
 // logout user
 export const logoutUser = async (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // Match this with your cookie settings
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Match this with your cookie settings
+  });
   return ApiResponse.send(res, 200, ApiResponse.success("logout successfully"));
 };
 // get user details
