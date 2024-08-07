@@ -13,6 +13,8 @@ export const signupUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Set to true in production
+      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // 'None' for cross-site cookies in production
     });
     // Exclude the password field
     user = user.toObject();
@@ -56,8 +58,8 @@ export const loginUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: true,
-      sameSite: "None",
+      secure: process.env.NODE_ENV === 'production', // Set to true in production
+      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // 'None' for cross-site cookies in production
     });
     // Exclude the password field
     user = user.toObject();
