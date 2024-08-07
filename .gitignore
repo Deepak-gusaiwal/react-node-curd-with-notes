@@ -7,6 +7,6 @@ node_modules/
 # Ignore any build artifacts or logs
 /build/
 *.log
-
+.env
 # Optionally, ignore IDE or editor-specific files (e.g., for VSCode)
 .vscode/
