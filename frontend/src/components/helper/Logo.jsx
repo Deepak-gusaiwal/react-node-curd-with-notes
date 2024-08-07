@@ -7,7 +7,7 @@ const Logo = ({ className = "" }) => {
   return (
     <Link to="/" className={`text-primary-400 flex justify-center items-center font-bold uppercase text-[clamp(1.5rem,2vw,2rem)] ${className} `}>
       {/* <img className='w-auto' src="/franchiseavs copy.png" alt="franchiseavs.com" /> */}
-      {status == statusVal.success ? user?.username : "Logo"}
+      { status != statusVal.idle && user?.username ? user?.username : "Logo"}
     </Link>
   );
 };
