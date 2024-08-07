@@ -75,11 +75,19 @@ export const loginUser = asyncHandler(async (req, res, next) => {
 });
 // logout user
 export const logoutUser = async (req, res) => {
-  res.clearCookie("token", {
+  // res.clearCookie("token", {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === "production", // Match this with your cookie settings
+  //   sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Match this with your cookie settings
+  // });
+
+  res.cookie("token", "", {
+    expires: new Date(Date.now() - 1), // Set expiry to a past date
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // Match this with your cookie settings
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Match this with your cookie settings
+    secure: process.env.NODE_ENV === "production", // Match the setting used for the cookie
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Match the setting used for the cookie
   });
+  
   return ApiResponse.send(res, 200, ApiResponse.success("logout successfully"));
 };
 // get user details
