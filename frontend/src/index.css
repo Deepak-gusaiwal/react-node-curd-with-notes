@@ -1,0 +1,527 @@
+/* --------------------------fonts */
+@font-face {
+  font-family: "Poppins";
+  font-weight: 400;
+  src: url("./assets/font/poppins/Poppins-Regular.woff2") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  src: url("./assets/font/poppins/Poppins-Medium.woff2") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  src: url("./assets/font/poppins/Poppins-SemiBold.woff2") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 700;
+  src: url("./assets/font/poppins/Poppins-Bold.woff2") format("truetype");
+  font-display: swap;
+}
+
+/* --------------------------------------------tailwind base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* -------------------------------------------base */
+/* Add custom base styles */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    user-select: none;
+  }
+  
+}
+html,
+body {
+  overflow-x: hidden;
+}
+body,html {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS */
+img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+:root {
+  --headerHeight: 60px;
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+h2 {
+  @apply text-3xl font-semibold;
+}
+h3 {
+  @apply text-2xl font-medium;
+}
+h4 {
+  @apply text-xl font-medium;
+}
+h5 {
+  @apply text-lg font-medium;
+}
+h6 {
+  @apply text-base font-medium;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.3;
+}
+p {
+  line-height: 1.2;
+}
+/* buttons css */
+
+.btn:not(.shadow-none):hover {
+  box-shadow: 0px 2px black;
+}
+/* ---------------------------------------------- header css */
+header {
+  height: var(--headerHeight);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 98;
+  @apply bg-white;
+}
+header .menu {
+  display: flex;
+  align-items: center;
+}
+header .menu > li {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+header .menu > li > a {
+  font-weight: 500;
+  transition: 200ms ease;
+  @apply text-slate-700 text-[16px] md:p-4 p-2 relative isolate flex justify-center items-center h-full capitalize;
+}
+header .menu > li > a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  height: 4px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms ease;
+  @apply bg-primary-400 rounded md:flex hidden;
+}
+header .menu > li:hover > a {
+  @apply text-primary-400;
+}
+header .menu > li:hover > a::before {
+  transform: translateX(-50%) scaleX(1);
+  transform-origin: left;
+}
+header .menu > li:has(.dropBox) > a {
+  border-radius: 1rem 1rem 0 0;
+}
+header .menu > li label,
+header .menu > li input {
+  display: none;
+}
+header .menu > li .dropBox {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 200ms ease;
+  z-index: 10;
+  @apply bg-primary-50 rounded shadow-sm overflow-hidden;
+}
+header .menu .dropBox li a {
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+  text-transform: capitalize;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.099);
+  @apply p-2 text-sm font-semibold text-slate-700 shadow-md;
+}
+header .menu .dropBox li a:hover {
+  box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 0.101);
+  @apply bg-primary-100 text-primary-500;
+}
+/* dropdown hover effect */
+header .menu li:hover .dropBox {
+  transform: translate(-50%, 0%);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* navToggler */
+.navToggler {
+  width: 40px;
+  height: 20px;
+
+  align-self: center;
+  @apply rounded cursor-pointer relative isolate;
+}
+.navToggler p {
+  text-transform: capitalize;
+}
+.navToggler span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  transform-origin: center;
+  transition: 200ms ease;
+  @apply bg-primary-500;
+}
+.navToggler span:nth-child(1) {
+  top: 1%;
+}
+.navToggler span:nth-child(3) {
+  bottom: 1%;
+}
+.navToggler.active span {
+  width: 80%;
+}
+.navToggler.active span:nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg) translateY(-50%);
+}
+.navToggler.active span:nth-child(3) {
+  bottom: 50%;
+  transform: rotate(-45deg) translateY(50%);
+}
+.navToggler p {
+  @apply text-[14px] text-center font-semibold;
+}
+.navToggler.active p {
+  opacity: 0;
+  transition: 200ms ease;
+}
+
+/* mobile menu */
+@media (max-width: 768px) {
+  header .menu {
+    position: absolute;
+    top: var(--headerHeight);
+    gap: 0.5rem;
+    right: 0;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    height: calc(100vh - var(--headerHeight));
+    width: clamp(250px, 35%, 350px);
+    overflow-y: auto;
+    padding: 1rem;
+    transform: translateX(150%);
+    z-index: 99;
+    @apply bg-primary-50;
+  }
+  header .menu.active {
+    transform: translateX(0%);
+  }
+  header .menu > li {
+    justify-content: initial;
+    height: auto;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  header .menu > li > a {
+    @apply text-secondary-500;
+  }
+  header .menu > li > a,
+  header .menu > li label {
+    border-bottom: 1px solid;
+    width: 100%;
+    @apply flex gap-1 p-1 justify-between items-center capitalize w-full font-bold border-primary-300;
+  }
+  header .menu > li:has(.dropBox) > a {
+    display: none;
+  }
+  header .menu > li .dropBox {
+    position: relative;
+    top: initial;
+    left: initial;
+    transform: initial;
+    visibility: visible;
+    opacity: initial;
+    width: 100%;
+    max-height: 0px;
+    transition: max-height 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow: hidden;
+  }
+  header .menu > li:hover .dropBox {
+    left: initial;
+    transform: initial;
+  }
+  header .menu > li > .dropBox li a {
+    white-space: wrap;
+  }
+
+  /* lables */
+  header .menu > li > input[type="checkbox"] {
+    display: none;
+  }
+  header .menu > li label > .indicator {
+    width: 23px;
+    height: 23px;
+    transition: 200ms ease;
+    @apply flex justify-center items-center text-primary-600;
+  }
+  header .menu > li > input:checked ~ label > .indicator {
+    transform: rotate(45deg);
+  }
+  header .menu > li label > a {
+    @apply text-secondary-400 ml-auto;
+  }
+  header .menu > li > input:checked ~ .dropBox {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+/* 2.hero section css---------------------------------------------------------------------------- */
+.heroRight img{
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.268));
+}
+/* 3.brands section css---------------------------------------------------------------------------- */
+.brandCard {
+  @apply relative isolate overflow-hidden;
+}
+
+.brandCard .contentBox {
+  @apply absolute top-0 left-0 w-full h-full bg-secondary-100 flex flex-col gap-1 bg-opacity-50 backdrop-blur-lg justify-center items-center -translate-y-full duration-200;
+}
+.brandCard:nth-child(2n) .contentBox {
+  @apply bg-primary-100 bg-opacity-50 p-1 translate-y-full;
+}
+.brandCard:hover .contentBox {
+  @apply translate-y-0;
+}
+/* 4.service section css---------------------------------------------------------------------------- */
+.serviceCard{
+  border-radius: 1rem 1rem clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem);
+  @apply border-b-4 border-primary-100;
+}
+.serviceCard:nth-child(2n){
+  border-radius: clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) 1rem 1rem;
+  @apply  border-secondary-100;
+}
+.serviceCard .imgBox{
+  @apply flex justify-center relative isolate overflow-hidden;
+}
+.serviceCard:hover .imgBox>img{
+  @apply blur-sm;
+}
+
+.serviceCard .imgBox .iconImg{
+  border-radius: 2rem 2rem 0 0;
+  @apply w-[120px] mx-auto translate-y-full duration-500 absolute bottom-0 bg-white border-primary-300 border-4;
+}
+.serviceCard:nth-child(2n) .imgBox .iconImg{
+  border-radius: 2rem 2rem 0 0;
+  @apply  border-secondary-300 ;
+}
+.serviceCard .imgBox .iconImg img{
+  @apply p-4;
+}
+.serviceCard:hover .iconImg {
+  @apply translate-y-0;
+}
+.serviceCard .contentBox{
+  @apply relative isolate overflow-hidden;
+}
+.serviceCard .contentBox::before{
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full duration-300 bg-primary-300 -z-10 -translate-y-[95%];
+}
+.serviceCard:nth-child(2n) .contentBox::before{
+  content: "";
+  @apply  bg-secondary-300 ;
+}
+.serviceCard:hover .contentBox::before{
+  @apply translate-y-0;
+}
+.serviceCard:hover .contentBox p,
+.serviceCard:hover .contentBox h3,
+.serviceCard:hover .contentBox a{
+  @apply text-white;
+}
+
+
+/* 5.blogs slider css ----------------------------------------------------------- */
+/* slider css start */
+.recentBlogSlider,
+.testimonialSlider
+{
+  padding-bottom: 40px;
+}
+.recentBlogSlider .swiper-pagination,
+.testimonialSlider .swiper-pagination
+ {
+  @apply py-2;
+}
+.recentBlogSlider .swiper-pagination .swiper-pagination-bullet,
+.testimonialSlider .swiper-pagination .swiper-pagination-bullet
+ {
+  @apply bg-secondary-500 w-2 h-2 rounded-none  scale-75 duration-200;
+}
+.recentBlogSlider
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.testimonialSlider
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active
+   {
+  @apply scale-100 bg-secondary-300 rotate-45;
+}
+.recentBlogSlider .swiper-button-prev,
+.testimonialSlider .swiper-button-prev
+{
+  @apply md:left-1 left-0 md:top-1/2 top-[60%];
+}
+.recentBlogSlider .swiper-button-next,
+.testimonialSlider .swiper-button-next
+{
+  @apply md:right-1 right-0 md:top-1/2 top-[60%];
+}
+.recentBlogSlider .swiper-button-prev::after,
+.recentBlogSlider .swiper-button-next::after,
+.testimonialSlider .swiper-button-prev::after,
+.testimonialSlider .swiper-button-next::after
+{
+  @apply md:text-xl text-sm text-white bg-secondary-400 md:p-2 p-1 rounded bg-opacity-50 duration-300;
+}
+.recentBlogSlider .swiper-button-prev::after:hover,
+.recentBlogSlider .swiper-button-next::after:hover,
+.testimonialSlider .swiper-button-prev::after:hover,
+.testimonialSlider .swiper-button-next::after:hover
+{
+  @apply bg-opacity-70;
+}
+/* end slider css */
+/* start blogcard */
+.recentBlogSlider .blogSlide .blogCard{
+  border-radius: 1rem 1rem clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) ;
+  @apply shadow-md border-b-4 border-primary-100;
+}
+.recentBlogSlider .blogSlide:nth-child(2n) .blogCard{
+  border-radius:clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) 1rem 1rem ;
+  @apply border-secondary-100;
+}
+.recentBlogSlider .blogSlide .blogCard .contentBox .details{
+  @apply flex justify-center gap-4 flex-wrap my-4;
+}
+.recentBlogSlider .blogSlide .blogCard .contentBox .details h5{
+  @apply flex items-center gap-2 text-sm capitalize font-normal border-l-2 border-zinc-300 ps-2 text-primary-400; 
+}
+.recentBlogSlider .blogSlide .blogSlide:nth-child(2n) .blogCard .contentBox .details h5{
+  @apply text-secondary-400; 
+}
+.recentBlogSlider .blogSlide .blogCard .contentBox .details h5:nth-child(1){
+  @apply border-0 p-0;
+}
+.recentBlogSlider .blogSlide .blogCard .contentBox{
+  @apply bg-white;
+}
+.recentBlogSlider .blogSlide .blogCard:hover .imgBox img{
+  transform: scale(1.1);
+}
+
+/* 6. ----------------------------------------------------------------------------testimonial slide css */
+.testimonailSlide .testimonialCard{
+  border-radius: clamp(1rem,5vw,6rem) 0 clamp(1rem,5vw,6rem) 0 ;
+  box-shadow:inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
+}
+.testimonailSlide .testimonialCard .imgBox{
+  box-shadow:inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
+}
+/* 6. ----------------------------------------------------------------------------contact section css */
+.contactLeft h3{
+  @apply uppercase text-lg mb-2 text-zinc-700;
+}
+.contactLeft .details li
+{
+  box-shadow: 0px 1px 0px rgb(217, 217, 217) ;
+  @apply flex gap-2 items-center p-2;
+}
+.contactLeft .details li svg,
+footer .footerBox .details li svg
+{
+  @apply text-white flex-shrink-0 flex justify-center items-center w-10 h-10 p-2 rounded-full bg-primary-300 border-2 border-white shadow-md;
+}
+.contactLeft .details li span{
+  @apply text-zinc-600;
+}
+.contactLeft .details li a{
+  @apply duration-300;
+}
+.contactLeft .details li a:hover{
+  @apply text-primary-400;
+}
+
+.contactLeft .socialLinks li svg,
+footer .footerBox ul.socialLinks li svg
+{
+  stroke-width: 1.5px;
+  @apply text-primary-400 text-[clamp(1.4rem,1.5vw,2.5rem)];
+}
+.contactLeft .socialLinks li a{
+  @apply flex justify-center items-center bg-primary-50 p-1 rounded shadow-md border-2 border-white -rotate-12 duration-200;
+}
+.contactLeft .socialLinks li a:hover{
+  @apply rotate-0 bg-primary-100 -translate-y-1;
+}
+/* 7. --------------------------------------------------------------------footer css */
+
+footer .footerBox p{
+  @apply text-sm text-zinc-700;
+}
+footer .footerBox .details li{
+  box-shadow: 0px 1px 0px rgb(217, 217, 217) ;
+  @apply flex gap-2 items-center p-2;
+}
+footer .footerBox .details li a:hover{
+  @apply text-primary-400;
+}
+footer .footerBox h3{
+  @apply capitalize mb-4 text-xl text-primary-500 relative isolate ps-4;
+}
+footer .footerBox h3::before{
+  content: "";
+  @apply absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary-400 rotate-45;
+}
+
+footer .footerBox .menuLinks li a{
+  @apply text-primary-400;
+}
+
+footer .footerBox .menuLinks li a:hover{
+  @apply text-primary-600;
+}
