@@ -56,6 +56,8 @@ export const loginUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: true,
+      sameSite: "None",
     });
     // Exclude the password field
     user = user.toObject();
@@ -110,7 +112,7 @@ export const editProfile = asyncHandler(async (req, res, next) => {
   if (avatar) {
     user.avatar = avatar;
   }
-   await user.save();
+  await user.save();
   let response = await User.findById(userId).select("-password");
 
   return ApiResponse.send(
@@ -120,7 +122,7 @@ export const editProfile = asyncHandler(async (req, res, next) => {
       `your profile ${
         username && !avatar ? "name" : !username && avatar ? "image" : ""
       } is updated successfully`,
-      { user:response }
+      { user: response }
     )
   );
 });
