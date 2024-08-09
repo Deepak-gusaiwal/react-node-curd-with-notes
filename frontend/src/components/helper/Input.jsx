@@ -38,6 +38,7 @@ const Input = (
         placeholder={placeholder}
         ref={ref}
         id={inputId}
+        // defaultValue={defaultValue}
         {...props}
       />
       {error && (

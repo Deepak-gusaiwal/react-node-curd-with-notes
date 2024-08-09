@@ -37,13 +37,13 @@
     box-sizing: border-box;
     user-select: none;
   }
-  
 }
 html,
 body {
   overflow-x: hidden;
 }
-body,html {
+body,
+html {
   width: 100%;
   height: 100%;
 }
@@ -307,7 +307,7 @@ header .menu li:hover .dropBox {
 }
 
 /* 2.hero section css---------------------------------------------------------------------------- */
-.heroRight img{
+.heroRight img {
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.268));
 }
 /* 3.brands section css---------------------------------------------------------------------------- */
@@ -325,71 +325,67 @@ header .menu li:hover .dropBox {
   @apply translate-y-0;
 }
 /* 4.service section css---------------------------------------------------------------------------- */
-.serviceCard{
-  border-radius: 1rem 1rem clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem);
+.serviceCard {
+  border-radius: 1rem 1rem clamp(1rem, 3vw, 6rem) clamp(1rem, 3vw, 6rem);
   @apply border-b-4 border-primary-100;
 }
-.serviceCard:nth-child(2n){
-  border-radius: clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) 1rem 1rem;
-  @apply  border-secondary-100;
+.serviceCard:nth-child(2n) {
+  border-radius: clamp(1rem, 3vw, 6rem) clamp(1rem, 3vw, 6rem) 1rem 1rem;
+  @apply border-secondary-100;
 }
-.serviceCard .imgBox{
+.serviceCard .imgBox {
   @apply flex justify-center relative isolate overflow-hidden;
 }
-.serviceCard:hover .imgBox>img{
+.serviceCard:hover .imgBox > img {
   @apply blur-sm;
 }
 
-.serviceCard .imgBox .iconImg{
+.serviceCard .imgBox .iconImg {
   border-radius: 2rem 2rem 0 0;
   @apply w-[120px] mx-auto translate-y-full duration-500 absolute bottom-0 bg-white border-primary-300 border-4;
 }
-.serviceCard:nth-child(2n) .imgBox .iconImg{
+.serviceCard:nth-child(2n) .imgBox .iconImg {
   border-radius: 2rem 2rem 0 0;
-  @apply  border-secondary-300 ;
+  @apply border-secondary-300;
 }
-.serviceCard .imgBox .iconImg img{
+.serviceCard .imgBox .iconImg img {
   @apply p-4;
 }
 .serviceCard:hover .iconImg {
   @apply translate-y-0;
 }
-.serviceCard .contentBox{
+.serviceCard .contentBox {
   @apply relative isolate overflow-hidden;
 }
-.serviceCard .contentBox::before{
+.serviceCard .contentBox::before {
   content: "";
   @apply absolute top-0 left-0 w-full h-full duration-300 bg-primary-300 -z-10 -translate-y-[95%];
 }
-.serviceCard:nth-child(2n) .contentBox::before{
+.serviceCard:nth-child(2n) .contentBox::before {
   content: "";
-  @apply  bg-secondary-300 ;
+  @apply bg-secondary-300;
 }
-.serviceCard:hover .contentBox::before{
+.serviceCard:hover .contentBox::before {
   @apply translate-y-0;
 }
 .serviceCard:hover .contentBox p,
 .serviceCard:hover .contentBox h3,
-.serviceCard:hover .contentBox a{
+.serviceCard:hover .contentBox a {
   @apply text-white;
 }
-
 
 /* 5.blogs slider css ----------------------------------------------------------- */
 /* slider css start */
 .recentBlogSlider,
-.testimonialSlider
-{
+.testimonialSlider {
   padding-bottom: 40px;
 }
 .recentBlogSlider .swiper-pagination,
-.testimonialSlider .swiper-pagination
- {
+.testimonialSlider .swiper-pagination {
   @apply py-2;
 }
 .recentBlogSlider .swiper-pagination .swiper-pagination-bullet,
-.testimonialSlider .swiper-pagination .swiper-pagination-bullet
- {
+.testimonialSlider .swiper-pagination .swiper-pagination-bullet {
   @apply bg-secondary-500 w-2 h-2 rounded-none  scale-75 duration-200;
 }
 .recentBlogSlider
@@ -397,131 +393,152 @@ header .menu li:hover .dropBox {
   .swiper-pagination-bullet.swiper-pagination-bullet-active,
 .testimonialSlider
   .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active
-   {
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
   @apply scale-100 bg-secondary-300 rotate-45;
 }
 .recentBlogSlider .swiper-button-prev,
-.testimonialSlider .swiper-button-prev
-{
+.testimonialSlider .swiper-button-prev {
   @apply md:left-1 left-0 md:top-1/2 top-[60%];
 }
 .recentBlogSlider .swiper-button-next,
-.testimonialSlider .swiper-button-next
-{
+.testimonialSlider .swiper-button-next {
   @apply md:right-1 right-0 md:top-1/2 top-[60%];
 }
 .recentBlogSlider .swiper-button-prev::after,
 .recentBlogSlider .swiper-button-next::after,
 .testimonialSlider .swiper-button-prev::after,
-.testimonialSlider .swiper-button-next::after
-{
+.testimonialSlider .swiper-button-next::after {
   @apply md:text-xl text-sm text-white bg-secondary-400 md:p-2 p-1 rounded bg-opacity-50 duration-300;
 }
 .recentBlogSlider .swiper-button-prev::after:hover,
 .recentBlogSlider .swiper-button-next::after:hover,
 .testimonialSlider .swiper-button-prev::after:hover,
-.testimonialSlider .swiper-button-next::after:hover
-{
+.testimonialSlider .swiper-button-next::after:hover {
   @apply bg-opacity-70;
 }
 /* end slider css */
 /* start blogcard */
-.recentBlogSlider .blogSlide .blogCard{
-  border-radius: 1rem 1rem clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) ;
+.recentBlogSlider .blogSlide .blogCard {
+  border-radius: 1rem 1rem clamp(1rem, 3vw, 6rem) clamp(1rem, 3vw, 6rem);
   @apply shadow-md border-b-4 border-primary-100;
 }
-.recentBlogSlider .blogSlide:nth-child(2n) .blogCard{
-  border-radius:clamp(1rem,3vw,6rem) clamp(1rem,3vw,6rem) 1rem 1rem ;
+.recentBlogSlider .blogSlide:nth-child(2n) .blogCard {
+  border-radius: clamp(1rem, 3vw, 6rem) clamp(1rem, 3vw, 6rem) 1rem 1rem;
   @apply border-secondary-100;
 }
-.recentBlogSlider .blogSlide .blogCard .contentBox .details{
+.recentBlogSlider .blogSlide .blogCard .contentBox .details {
   @apply flex justify-center gap-4 flex-wrap my-4;
 }
-.recentBlogSlider .blogSlide .blogCard .contentBox .details h5{
-  @apply flex items-center gap-2 text-sm capitalize font-normal border-l-2 border-zinc-300 ps-2 text-primary-400; 
+.recentBlogSlider .blogSlide .blogCard .contentBox .details h5 {
+  @apply flex items-center gap-2 text-sm capitalize font-normal border-l-2 border-zinc-300 ps-2 text-primary-400;
 }
-.recentBlogSlider .blogSlide .blogSlide:nth-child(2n) .blogCard .contentBox .details h5{
-  @apply text-secondary-400; 
+.recentBlogSlider
+  .blogSlide
+  .blogSlide:nth-child(2n)
+  .blogCard
+  .contentBox
+  .details
+  h5 {
+  @apply text-secondary-400;
 }
-.recentBlogSlider .blogSlide .blogCard .contentBox .details h5:nth-child(1){
+.recentBlogSlider .blogSlide .blogCard .contentBox .details h5:nth-child(1) {
   @apply border-0 p-0;
 }
-.recentBlogSlider .blogSlide .blogCard .contentBox{
+.recentBlogSlider .blogSlide .blogCard .contentBox {
   @apply bg-white;
 }
-.recentBlogSlider .blogSlide .blogCard:hover .imgBox img{
+.recentBlogSlider .blogSlide .blogCard:hover .imgBox img {
   transform: scale(1.1);
 }
 
 /* 6. ----------------------------------------------------------------------------testimonial slide css */
-.testimonailSlide .testimonialCard{
-  border-radius: clamp(1rem,5vw,6rem) 0 clamp(1rem,5vw,6rem) 0 ;
-  box-shadow:inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
+.testimonailSlide .testimonialCard {
+  border-radius: clamp(1rem, 5vw, 6rem) 0 clamp(1rem, 5vw, 6rem) 0;
+  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
 }
-.testimonailSlide .testimonialCard .imgBox{
-  box-shadow:inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
+.testimonailSlide .testimonialCard .imgBox {
+  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.208);
 }
 /* 6. ----------------------------------------------------------------------------contact section css */
-.contactLeft h3{
+.contactLeft h3 {
   @apply uppercase text-lg mb-2 text-zinc-700;
 }
-.contactLeft .details li
-{
-  box-shadow: 0px 1px 0px rgb(217, 217, 217) ;
+.contactLeft .details li {
+  box-shadow: 0px 1px 0px rgb(217, 217, 217);
   @apply flex gap-2 items-center p-2;
 }
 .contactLeft .details li svg,
-footer .footerBox .details li svg
-{
+footer .footerBox .details li svg {
   @apply text-white flex-shrink-0 flex justify-center items-center w-10 h-10 p-2 rounded-full bg-primary-300 border-2 border-white shadow-md;
 }
-.contactLeft .details li span{
+.contactLeft .details li span {
   @apply text-zinc-600;
 }
-.contactLeft .details li a{
+.contactLeft .details li a {
   @apply duration-300;
 }
-.contactLeft .details li a:hover{
+.contactLeft .details li a:hover {
   @apply text-primary-400;
 }
 
 .contactLeft .socialLinks li svg,
-footer .footerBox ul.socialLinks li svg
-{
+footer .footerBox ul.socialLinks li svg {
   stroke-width: 1.5px;
   @apply text-primary-400 text-[clamp(1.4rem,1.5vw,2.5rem)];
 }
-.contactLeft .socialLinks li a{
+.contactLeft .socialLinks li a {
   @apply flex justify-center items-center bg-primary-50 p-1 rounded shadow-md border-2 border-white -rotate-12 duration-200;
 }
-.contactLeft .socialLinks li a:hover{
+.contactLeft .socialLinks li a:hover {
   @apply rotate-0 bg-primary-100 -translate-y-1;
 }
 /* 7. --------------------------------------------------------------------footer css */
 
-footer .footerBox p{
+footer .footerBox p {
   @apply text-sm text-zinc-700;
 }
-footer .footerBox .details li{
-  box-shadow: 0px 1px 0px rgb(217, 217, 217) ;
+footer .footerBox .details li {
+  box-shadow: 0px 1px 0px rgb(217, 217, 217);
   @apply flex gap-2 items-center p-2;
 }
-footer .footerBox .details li a:hover{
+footer .footerBox .details li a:hover {
   @apply text-primary-400;
 }
-footer .footerBox h3{
+footer .footerBox h3 {
   @apply capitalize mb-4 text-xl text-primary-500 relative isolate ps-4;
 }
-footer .footerBox h3::before{
+footer .footerBox h3::before {
   content: "";
   @apply absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary-400 rotate-45;
 }
 
-footer .footerBox .menuLinks li a{
+footer .footerBox .menuLinks li a {
   @apply text-primary-400;
 }
 
-footer .footerBox .menuLinks li a:hover{
+footer .footerBox .menuLinks li a:hover {
   @apply text-primary-600;
+}
+
+/* =======================================invoiceFormContainer */
+.invoiceFormContainer{
+  @apply overflow-y-auto;
+}
+.invoiceFormContainer table{
+  width: 100%;
+}
+.invoiceFormContainer table,
+.invoiceFormContainer table td,
+.invoiceFormContainer table th {
+  border: 1px solid black;
+}
+.invoiceFormContainer table {
+  border-collapse: collapse;
+}
+.invoiceFormContainer table th {
+  @apply bg-primary-100 whitespace-nowrap;
+}
+.invoiceFormContainer table td,
+.invoiceFormContainer table th {
+@apply p-2;
 }

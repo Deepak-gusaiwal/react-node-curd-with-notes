@@ -53,7 +53,7 @@ const Footer = () => {
           <ul className="details mb-4">
             <li>
               <FaLocationDot />
-              <span>Madipur, New Delhi 110058</span>
+              <span>Madipur, New Delhi 110063</span>
             </li>
             <li>
               <FaPhone />

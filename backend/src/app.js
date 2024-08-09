@@ -21,9 +21,11 @@ app.use(cookieParser());
 // --------------------------------------------------------------- routes
 import userRouter from "./routes/user.route.js";
 import noteRouter from "./routes/note.route.js";
+import invoiceRouter from "./routes/invoice.route.js";
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/note", noteRouter);
+app.use("/api/v1/invoice", invoiceRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

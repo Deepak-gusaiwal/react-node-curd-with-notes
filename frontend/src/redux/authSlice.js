@@ -46,7 +46,7 @@ export const getSession = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await Axios.get("/user/myprofile");
-        console.log("getSession reducer", response);
+        // console.log("getSession reducer", response);
       return response.data;
     } catch (error) {
       //   console.log("F - Error While Intialize Session", error);

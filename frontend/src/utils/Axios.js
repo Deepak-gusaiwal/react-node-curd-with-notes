@@ -1,6 +1,9 @@
 import axios from "axios";
-import { apiUrl } from "./env";
+const apiUrl = {
+  local:"http://localhost:3000/api/v1",
+  production:"https://react-node-curd-with-notes.onrender.com/api/v1"
+}
 export const Axios = axios.create({
-  baseURL: "https://react-node-curd-with-notes.onrender.com/api/v1",
+  baseURL: apiUrl.production,
   withCredentials: true,
 });
